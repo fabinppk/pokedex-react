@@ -3,15 +3,10 @@ import PropTypes from 'prop-types';
 import ButtonCustomSwiper from '_atoms/ButtonCustomSwiper';
 import Swiper from 'react-id-swiper/lib/ReactIdSwiper';
 import Card from '_molecules/Card';
+import { connect } from 'react-redux';
+import actions from '_redux/actions';
 
 class SingleSwiper extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            viewed: 0,
-        };
-    }
-
     componentDidMount() {
         const handleResize = () => {
             if (this.swiper) {
@@ -24,11 +19,10 @@ class SingleSwiper extends Component {
 
     /* istanbul ignore next */
     onChangeSlide = () => {
-        const { index, getAllPokemon } = this.props;
-        const { viewed } = this.state;
-        if (this.swiper.activeIndex > viewed) {
+        const { getAllPokemon, setViewed, global } = this.props;
+        if (this.swiper.activeIndex > global.viewed) {
             getAllPokemon();
-            this.setState({ viewed: this.swiper.activeIndex + index.limit });
+            setViewed(this.swiper.activeIndex + global.index.limit);
         }
     };
 
@@ -99,11 +93,15 @@ SingleSwiper.propTypes = {
     sectionSubtitle: PropTypes.string,
     withButtons: PropTypes.bool,
     showPoints: PropTypes.bool,
-    index: PropTypes.shape({
-        offset: PropTypes.number,
-        limit: PropTypes.number,
+    global: PropTypes.shape({
+        index: PropTypes.shape({
+            offset: PropTypes.number,
+            limit: PropTypes.number,
+        }),
+        viewed: PropTypes.number,
     }),
     getAllPokemon: PropTypes.func.isRequired,
+    setViewed: PropTypes.func.isRequired,
 };
 
 SingleSwiper.defaultProps = {
@@ -112,7 +110,7 @@ SingleSwiper.defaultProps = {
     sectionSubtitle: '',
     withButtons: false,
     showPoints: true,
-    index: {},
+    global: {},
 };
 
-export default SingleSwiper;
+export default connect((state) => state, actions)(SingleSwiper);

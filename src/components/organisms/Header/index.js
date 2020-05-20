@@ -5,11 +5,15 @@ import logo from '_images/logo_beta.png';
 import Logo from '_atoms/Logo';
 import SearchInput from '_molecules/SearchInput';
 import { getPokemonByName } from '_utils/requestApi';
+import { useDispatch } from 'react-redux';
+import actions from '_redux/actions';
 
 import style from '_organisms/Header/index.module.scss';
 
-const Header = ({ setPokemons, defineHeight, getAllPokemon }) => {
+const Header = ({ defineHeight, getAllPokemon }) => {
     const [searchInput, setSearchInput] = useState('');
+
+    const dispatch = useDispatch();
 
     useEffect(() => {
         const getPokemonByNames = async () => {
@@ -18,10 +22,12 @@ const Header = ({ setPokemons, defineHeight, getAllPokemon }) => {
                 pokemon = await getPokemonByName(searchInput.toLowerCase());
                 if (pokemon) {
                     const height = defineHeight();
-                    setPokemons([{ ...pokemon, height }]);
+                    await dispatch(actions.setOnePokemon({ ...pokemon, height }));
+                    await dispatch(actions.setIndex({ offset: 0, limit: 15 }));
                 }
             } else if (!pokemon) {
                 getAllPokemon(true);
+                await dispatch(actions.setViewed(0));
             }
         };
 
@@ -46,13 +52,11 @@ const Header = ({ setPokemons, defineHeight, getAllPokemon }) => {
 };
 
 Header.propTypes = {
-    setPokemons: PropTypes.func,
     defineHeight: PropTypes.func,
     getAllPokemon: PropTypes.func,
 };
 
 Header.defaultProps = {
-    setPokemons: () => {},
     defineHeight: () => {},
     getAllPokemon: () => {},
 };
