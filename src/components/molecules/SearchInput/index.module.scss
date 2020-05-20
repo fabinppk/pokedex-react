@@ -39,6 +39,10 @@
 @media (max-width: 768px) {
     .blockSearchInput {
         justify-content: center;
-        margin-top: 30px;
+        margin-top: 15px;
+
+        .input {
+            font-size: 125%;
+        }
     }
 }
