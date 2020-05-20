@@ -15,7 +15,7 @@ const Header = ({ setPokemons, defineHeight, getAllPokemon }) => {
         const getPokemonByNames = async () => {
             let pokemon = null;
             if (searchInput) {
-                pokemon = await getPokemonByName(searchInput);
+                pokemon = await getPokemonByName(searchInput.toLowerCase());
                 if (pokemon) {
                     const height = defineHeight();
                     setPokemons([{ ...pokemon, height }]);
