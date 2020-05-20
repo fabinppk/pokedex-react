@@ -21,7 +21,7 @@
     position: relative;
 
     .swiper-container {
-        width: 100%;
+        width: calc(100% + 20px);
         padding: 38px 20px;
 
         .swiper-wrapper {
@@ -81,6 +81,7 @@
 @media (max-width: 768px) {
     .block-custom-swiper-single {
         .swiper-container {
+            padding-top: 0;
             .swiper-wrapper {
                 .swiper-slide {
                     max-width: 80%;
