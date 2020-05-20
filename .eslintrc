@@ -1,0 +1,43 @@
+{
+    
+    "extends": ["airbnb", "prettier", "prettier/react"],
+    "plugins": ["react", "prettier"],
+     "env": {
+         "browser": true,
+         "node": true,
+         "es6": true,
+         "jest": true
+     },
+    "settings": {
+        "import/resolver": {
+            "webpack": {
+                "config": "webpack.extra.js"
+            }
+        }
+    },
+    "parser": "babel-eslint",
+    "rules": {
+        "indent": ["error", 4, { "SwitchCase": 1 }],
+        "import/extensions": "off",
+        "import/no-duplicates": "off",
+        "import/order": "off",
+        "import/no-self-import": "off",
+        "import/no-cycle": "off",
+        "import/no-named-as-default": "off",
+        "import/no-named-as-default-member": "off",
+        "import/named": "off",
+        "import/no-dynamic-require": "off",
+        "global-require": "off",
+        "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+        "class-methods-use-this": "off",
+        "import/no-unresolved": "off",
+        "prettier/prettier": "error",
+        "import/no-extraneous-dependencies": "off",
+        "import/no-useless-path-segments": 1,
+        "react/jsx-props-no-spreading": "off",
+        "jsx-a11y/control-has-associated-label": 1,
+        "react/state-in-constructor": 1,
+        "no-useless-catch": 1,
+        "no-self-assign": 1
+    }
+}

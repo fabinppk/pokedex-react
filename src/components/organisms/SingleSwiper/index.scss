@@ -1,0 +1,98 @@
+@mixin defineCard($cards) {
+    $aux: $cards;
+    + .swiper-slide {
+        img {
+            width: get-vh(285px);
+            height: get-vh(285px);
+        }
+
+        @if $aux > 0 {
+            @include defineCard($aux - 1);
+        }
+    }
+}
+
+@function get-vh($object) {
+    $vh: (768 * 0.01) * 1px;
+    @return ($object / $vh) * 1vh;
+}
+
+.block-custom-swiper-single {
+    position: relative;
+
+    .swiper-container {
+        width: 100%;
+        padding: 38px 20px;
+
+        .swiper-wrapper {
+            align-items: flex-end;
+            // height: 545px;
+            height: 60vh;
+
+            .swiper-slide {
+                max-width: 31%;
+                position: relative;
+                height: initial;
+
+                img {
+                    transition: width $transition-time $transition-type $transition-delay,
+                        height $transition-time $transition-type $transition-delay;
+                }
+            }
+        }
+    }
+
+    .custom-swiper-pagination {
+        position: relative;
+        margin-top: $margin-spacing;
+        text-align: center;
+
+        .swiper-pagination-bullet {
+            margin: 0 5px;
+            width: 10px;
+            height: 10px;
+            background: $color-grey-6;
+            opacity: initial;
+
+            &.swiper-pagination-bullet-active {
+                background: $color-secondary;
+            }
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    .block-custom-swiper-single {
+        .swiper-container {
+            .swiper-wrapper {
+                .swiper-slide-active {
+                    img {
+                        width: get-vh(285px);
+                        height: get-vh(285px);
+                    }
+
+                    @include defineCard(1);
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .block-custom-swiper-single {
+        .swiper-container {
+            .swiper-wrapper {
+                .swiper-slide {
+                    max-width: 80%;
+                }
+
+                .swiper-slide-active {
+                    img {
+                        width: 285px;
+                        height: 285px;
+                    }
+                }
+            }
+        }
+    }
+}

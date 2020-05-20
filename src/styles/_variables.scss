@@ -1,0 +1,64 @@
+$app-background: white;
+
+/* Primary Color in HSL */
+$primary-hue: 217;
+$primary-saturation: 100%;
+$primary-light: 24%;
+
+$color-primary: hsl($primary-hue, $primary-saturation, $primary-light);
+$color-primary-light: hsl($primary-hue, $primary-saturation, calc(#{$primary-light} + 10%));
+$color-primary-dark: hsl($primary-hue, $primary-saturation, calc(#{$primary-light} - 10%));
+
+/* Secondary Color in HSL */
+$secondary-hue: 215;
+$secondary-saturation: 85%;
+$secondary-light: 53%;
+
+$color-secondary: hsl($secondary-hue, $secondary-saturation, $secondary-light);
+$color-secondary-light: hsl($secondary-hue, $secondary-saturation, calc(#{$secondary-light} + 10%));
+$color-secondary-dark: hsl($secondary-hue, $secondary-saturation, calc(#{$secondary-light} - 10%));
+
+/* Gray Color */
+
+$color-grey-1: #292f33;
+$color-grey-2: #475359;
+$color-grey-3: #667680;
+$color-grey-4: #8b9ca6;
+$color-grey-5: #bac5cc;
+$color-grey-6: #dae1e6;
+$color-grey-7: #f2f4f5;
+
+/* Border-radius */
+
+$border-radius: 4px;
+$border-rounded: 25px;
+
+/* Box-shadow */
+
+$box-shadow-1: 0px 2px 4px rgba(0, 0, 0, 0.05);
+$box-shadow-2: 0 19px 49px rgba(0, 0, 0, 0.4);
+$box-shadow-3: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+
+// /* Trnasitions */
+
+$transition-time: 0.2s;
+$transition-type: ease;
+$transition-delay: 0.2s;
+
+$default-scale: 0.6;
+
+$color-white: #fff;
+$font-primary: 'Source Sans Pro', sans-serif;
+$font-secondary: 'Montserrat', sans-serif;
+$width-site: 1600px;
+
+$global-padding: 20px;
+$margin-spacing: 40px;
+$content-padding: 20px;
+
+/* z-index */
+
+$z-index-default: 1;
+$z-index-menu: 10;
+$z-index-dropdown: 100;
+$z-index-page: 10000;

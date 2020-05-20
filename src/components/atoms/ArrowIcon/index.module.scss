@@ -1,0 +1,237 @@
+.icon {
+    position: relative;
+    display: inline-block;
+    border-radius: $border-radius;
+    border: 2px solid transparent;
+    font-weight: bold;
+    color: $color-grey-3;
+    font-size: 20px;
+}
+
+@media (max-width: 1200px) {
+    .icon {
+        font-size: 17px;
+    }
+}
+
+.box {
+    &.bgWhite {
+        border: 2px solid $color-white;
+    }
+
+    &.bgBlack {
+        border: 2px solid black;
+    }
+
+    &.bgPrimary {
+        border: 2px solid $color-primary;
+    }
+
+    &.bgSecondary {
+        border: 2px solid $color-secondary;
+    }
+
+    &.bgGrey {
+        border: 2px solid $color-grey-3;
+    }
+}
+
+.arrowRight,
+.arrowLeft,
+.arrowTop,
+.arrowBottom {
+    &:before,
+    &:after {
+        content: '';
+        position: absolute;
+        transition: all $transition-time $transition-type;
+    }
+
+    &.white {
+        &:before,
+        &:after {
+            background-color: white;
+        }
+    }
+
+    &.black {
+        &:before,
+        &:after {
+            background-color: black;
+        }
+    }
+
+    &.primary {
+        &:hover {
+            border: 2px solid $color-primary;
+        }
+
+        &:active {
+            border: 2px solid $color-primary-dark;
+        }
+
+        &:before,
+        &:after {
+            background-color: $color-primary;
+        }
+    }
+
+    &.secondary {
+        &:hover {
+            border: 2px solid $color-secondary;
+        }
+
+        &:active {
+            border: 2px solid $color-secondary-dark;
+        }
+
+        &:before,
+        &:after {
+            background-color: $color-secondary;
+        }
+    }
+
+    &.grey {
+        &:hover {
+            &:before,
+            &:after {
+                background-color: $color-grey-2;
+            }
+        }
+
+        &:before,
+        &:after {
+            background-color: $color-grey-3;
+        }
+    }
+}
+
+.arrowRight {
+    width: 115px;
+    height: 50px;
+    padding: 9px 9px 9px 0;
+
+    @media (max-width: 1200px) {
+        width: 100px;
+        height: 50px;
+        padding: 12px 9px 9px 0px;
+    }
+
+    &:before {
+        top: 25%;
+        left: 90%;
+        width: 3px;
+        height: 15px;
+        transform: rotate(135deg);
+    }
+
+    &:after {
+        top: 44%;
+        left: 90%;
+        width: 3px;
+        height: 15px;
+        transform: rotate(45deg);
+    }
+
+    @media (max-width: 1200px) {
+        &:before {
+            top: 25%;
+            left: 90%;
+            width: 3px;
+            height: 15px;
+        }
+
+        &:after {
+            top: 44%;
+            left: 90%;
+            width: 3px;
+            height: 15px;
+        }
+    }
+}
+
+.arrowLeft {
+    width: 115px;
+    height: 50px;
+    padding: 9px 0px 9px 9px;
+
+    @media (max-width: 1200px) {
+        width: 100px;
+        height: 50px;
+        padding: 12px 0px 9px 9px;
+    }
+
+    &:before {
+        top: 25%;
+        right: 90%;
+        width: 3px;
+        height: 15px;
+        transform: rotate(45deg);
+    }
+
+    &:after {
+        top: 44%;
+        right: 90%;
+        width: 3px;
+        height: 15px;
+        transform: rotate(135deg);
+    }
+
+    @media (max-width: 1200px) {
+        &:before {
+            top: 25%;
+            right: 90%;
+            width: 3px;
+            height: 15px;
+        }
+
+        &:after {
+            top: 44%;
+            right: 90%;
+            width: 3px;
+            height: 15px;
+        }
+    }
+}
+
+.arrowTop {
+    width: 80px;
+    height: 40px;
+
+    &:before {
+        top: 10px;
+        right: 22px;
+        width: 3px;
+        height: 9px;
+        transform: rotate(45deg);
+    }
+
+    &:after {
+        top: 10px;
+        right: 12px;
+        width: 3px;
+        height: 9px;
+        transform: rotate(135deg);
+    }
+}
+
+.arrowBottom {
+    width: 80px;
+    height: 40px;
+
+    &:before {
+        top: 11px;
+        right: 21px;
+        width: 3px;
+        height: 9px;
+        transform: rotate(135deg);
+    }
+
+    &:after {
+        top: 11px;
+        right: 12px;
+        width: 3px;
+        height: 9px;
+        transform: rotate(45deg);
+    }
+}

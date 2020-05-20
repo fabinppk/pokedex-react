@@ -1,0 +1,67 @@
+version: 2
+jobs:
+  'Install Dependencies':
+    docker:
+      - image: circleci/node:12
+    steps:
+      - checkout
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+      - run:
+          name: install dependencies
+          command: npm install
+      - save_cache:
+          paths:
+            - 'node_modules'
+          key: dependency-cache-{{ checksum "package.json" }}
+  'Run Build':
+    docker:
+      - image: circleci/node:12
+    steps:
+      - checkout
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+      - run:
+          name: build
+          command: |
+            npm install
+            npm run build
+  'Run Tests':
+    docker:
+      - image: circleci/node:12
+    steps:
+      - checkout
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+      - run:
+          name: tests
+          command: |
+            npm install
+            npm run test:coverage
+  'Run Lint':
+    docker:
+      - image: circleci/node:12
+    steps:
+      - checkout
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+      - run:
+          name: lint
+          command: |
+            npm install
+            npm run lint
+
+workflows:
+  version: 2
+  master:
+    jobs:
+      - 'Install Dependencies'
+      - 'Run Build':
+          requires:
+            - 'Install Dependencies'
+      - 'Run Tests':
+          requires:
+            - 'Install Dependencies'
+      - 'Run Lint':
+          requires:
+            - 'Install Dependencies'

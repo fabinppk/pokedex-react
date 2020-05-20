@@ -1,0 +1,27 @@
+@mixin swiper-button() {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    position: relative;
+    padding: 0;
+}
+
+.block-swiper-button-custom {
+    display: flex;
+    justify-content: flex-end;
+    margin: 0px 40px;
+}
+
+.swiper-button-custom-next {
+    @include swiper-button;
+}
+
+.swiper-button-custom-prev {
+    @include swiper-button;
+}
+
+@media (max-width: 768px) {
+    .block-swiper-button-custom {
+        display: none;
+    }
+}

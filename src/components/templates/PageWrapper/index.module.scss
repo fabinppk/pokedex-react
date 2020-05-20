@@ -1,0 +1,35 @@
+.masterContent {
+    display: flex;
+    align-items: flex-start;
+    margin-top: 120px;
+    flex-wrap: wrap;
+
+    .button {
+        background: transparent;
+        border: none;
+        padding: 0;
+    }
+
+    .arrow {
+        margin-right: 15px;
+    }
+
+    .title {
+        margin-bottom: $margin-spacing;
+    }
+
+    .content {
+        width: calc(100vw + 40px);
+        margin-left: -20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .masterContent {
+        margin-top: 170px;
+
+        .content {
+            justify-content: space-between;
+        }
+    }
+}
