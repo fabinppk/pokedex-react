@@ -16,6 +16,17 @@ const Index = () => {
         return ((150 + Math.random() * (220 - 150)) / 10) * 2;
     };
 
+    const createPokemonObj = (infoPokemon) => {
+        const height = defineHeight();
+        return {
+            ...infoPokemon,
+            height,
+            sprites: {
+                front_default: `/${infoPokemon.name}.png`,
+            },
+        };
+    };
+
     const getAllPokemon = async (reset) => {
         let allPokemons;
         if (reset) {
@@ -29,8 +40,7 @@ const Index = () => {
         allPokemons.map(async (pokemon, i) => {
             if (i + index.offset <= index.offset + index.limit) {
                 const infoPokemon = await getPokemon(pokemon.url);
-                const height = defineHeight();
-                await dispatch(actions.setPokemons({ ...infoPokemon, height }));
+                await dispatch(actions.setPokemons(createPokemonObj(infoPokemon)));
             }
         });
     };
