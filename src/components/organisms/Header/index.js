@@ -15,14 +15,24 @@ const Header = ({ defineHeight, getAllPokemon }) => {
 
     const dispatch = useDispatch();
 
+    const createPokemonObj = (infoPokemon) => {
+        const height = defineHeight();
+        return {
+            ...infoPokemon,
+            height,
+            sprites: {
+                front_default: `/${infoPokemon.name}.png`,
+            },
+        };
+    };
+
     useEffect(() => {
         const getPokemonByNames = async () => {
             let pokemon = null;
             if (searchInput) {
                 pokemon = await getPokemonByName(searchInput.toLowerCase());
                 if (pokemon) {
-                    const height = defineHeight();
-                    await dispatch(actions.setOnePokemon({ ...pokemon, height }));
+                    await dispatch(actions.setOnePokemon(createPokemonObj(pokemon)));
                     await dispatch(actions.setIndex({ offset: 0, limit: 15 }));
                 }
             } else if (!pokemon) {
