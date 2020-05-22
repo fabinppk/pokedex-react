@@ -1,8 +1,9 @@
 .masterContent {
     display: flex;
-    align-items: flex-start;
-    margin-top: 120px;
+    align-items: center;
+    @include defineMarginBasedOnMenu();
     flex-wrap: wrap;
+    height: 100%;
 
     .button {
         background: transparent;
@@ -26,8 +27,6 @@
 
 @media (max-width: 768px) {
     .masterContent {
-        margin-top: 170px;
-
         .content {
             justify-content: space-between;
         }

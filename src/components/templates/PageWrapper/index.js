@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Header from '_organisms/Header';
+import Footer from '_organisms/Footer';
 
 import style from '_templates/PageWrapper/index.module.scss';
 
@@ -11,6 +12,7 @@ const PageWrapper = ({ children, defineHeight, getAllPokemon }) => {
             <div className={style.masterContent}>
                 <section className={style.content}>{children}</section>
             </div>
+            <Footer />
         </>
     );
 };

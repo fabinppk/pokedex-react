@@ -38,11 +38,19 @@
 
 @media (max-width: 768px) {
     .blockSearchInput {
-        justify-content: center;
-        margin-top: 15px;
-
         .input {
             font-size: 125%;
+        }
+    }
+}
+
+@media (max-width: 560px) {
+    .blockSearchInput {
+        padding: 0 15px;
+
+        .input {
+            min-width: 180px;
+            width: 100%;
         }
     }
 }

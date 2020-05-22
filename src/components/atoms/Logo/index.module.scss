@@ -7,3 +7,13 @@
         width: 220px;
     }
 }
+
+@media (max-width: 560px) {
+    .container {
+        padding: 0 15px;
+
+        .logo {
+            width: 120px;
+        }
+    }
+}

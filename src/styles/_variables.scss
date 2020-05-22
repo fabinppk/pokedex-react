@@ -62,3 +62,24 @@ $z-index-default: 1;
 $z-index-menu: 10;
 $z-index-dropdown: 100;
 $z-index-page: 10000;
+
+@mixin defineHeight() {
+    height: 120px;
+    @media (max-width: 560px) {
+        height: 64px;
+    }
+}
+
+@mixin defineMarginBasedOnMenu() {
+    margin-top: 120px;
+    @media (max-width: 560px) {
+        margin-top: 64px;
+    }
+}
+
+@mixin defineHieghtPageBasedOnMenu() {
+    height: calc(100% - 120px);
+    @media (max-width: 560px) {
+        height: calc(100% - 64px);
+    }
+}
