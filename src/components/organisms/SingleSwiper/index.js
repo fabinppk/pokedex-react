@@ -22,7 +22,7 @@ class SingleSwiper extends Component {
         const { getAllPokemon, setViewed, global } = this.props;
         if (this.swiper.activeIndex > global.viewed) {
             getAllPokemon();
-            setViewed(this.swiper.activeIndex + global.index.limit);
+            setViewed(this.swiper.activeIndex + global.index.limit - 3);
         }
     };
 

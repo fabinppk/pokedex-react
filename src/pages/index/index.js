@@ -18,11 +18,19 @@ const Index = () => {
 
     const createPokemonObj = (infoPokemon) => {
         const height = defineHeight();
+        let img;
+
+        try {
+            img = require(`../../../public/${infoPokemon.name}.png`);
+        } catch (error) {
+            console.log('Não encontrou: ', `${infoPokemon.name}.png`);
+            img = infoPokemon.sprites.front_default;
+        }
         return {
             ...infoPokemon,
             height,
             sprites: {
-                front_default: `/${infoPokemon.name}.png`,
+                front_default: img,
             },
         };
     };
