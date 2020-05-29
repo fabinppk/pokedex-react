@@ -20,6 +20,8 @@ html {
 
 #root {
     @include defineHieghtPageBasedOnMenu();
+    min-height: calc(480px + 46px);
+    position: relative;
 }
 
 body {
