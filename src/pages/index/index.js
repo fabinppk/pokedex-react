@@ -2,6 +2,7 @@ import React from 'react';
 import PageWrapper from '_templates/PageWrapper';
 import SingleSwiper from '_organisms/SingleSwiper';
 import { getAllPokemons, getPokemon } from '_utils/requestApi';
+import { createPokemonObj } from '_utils/helpers';
 import { useDispatch, useSelector } from 'react-redux';
 import actions from '_redux/actions';
 
@@ -11,29 +12,6 @@ const Index = () => {
     }));
 
     const dispatch = useDispatch();
-
-    const defineHeight = () => {
-        return ((150 + Math.random() * (220 - 150)) / 10) * 2;
-    };
-
-    const createPokemonObj = (infoPokemon) => {
-        const height = defineHeight();
-        let img;
-
-        try {
-            img = require(`../../../public/${infoPokemon.name}.png`);
-        } catch (error) {
-            console.log('Não encontrou: ', `${infoPokemon.name}.png`);
-            img = infoPokemon.sprites.front_default;
-        }
-        return {
-            ...infoPokemon,
-            height,
-            sprites: {
-                front_default: img,
-            },
-        };
-    };
 
     const getAllPokemon = async (reset) => {
         let allPokemons;
@@ -54,11 +32,7 @@ const Index = () => {
     };
 
     return (
-        <PageWrapper
-            title="Dashboard - home"
-            defineHeight={defineHeight}
-            getAllPokemon={getAllPokemon}
-        >
+        <PageWrapper title="Dashboard - home" getAllPokemon={getAllPokemon}>
             <SingleSwiper
                 sectionTitle="Os melhores hotéis estão aqui"
                 slides={pokemons}

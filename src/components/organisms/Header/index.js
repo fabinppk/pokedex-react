@@ -5,34 +5,16 @@ import logo from '_images/logo_beta.png';
 import Logo from '_atoms/Logo';
 import SearchInput from '_molecules/SearchInput';
 import { getPokemonByName } from '_utils/requestApi';
+import { createPokemonObj } from '_utils/helpers';
 import { useDispatch } from 'react-redux';
 import actions from '_redux/actions';
 
 import style from '_organisms/Header/index.module.scss';
 
-const Header = ({ defineHeight, getAllPokemon }) => {
+const Header = ({ getAllPokemon }) => {
     const [searchInput, setSearchInput] = useState('');
 
     const dispatch = useDispatch();
-
-    const createPokemonObj = (infoPokemon) => {
-        const height = defineHeight();
-        let img;
-
-        try {
-            img = require(`../../../../public/${infoPokemon.name}.png`);
-        } catch (error) {
-            console.log('Não encontrou: ', `${infoPokemon.name}.png`);
-            img = infoPokemon.sprites.front_default;
-        }
-        return {
-            ...infoPokemon,
-            height,
-            sprites: {
-                front_default: img,
-            },
-        };
-    };
 
     useEffect(() => {
         const getPokemonByNames = async () => {
@@ -70,12 +52,10 @@ const Header = ({ defineHeight, getAllPokemon }) => {
 };
 
 Header.propTypes = {
-    defineHeight: PropTypes.func,
     getAllPokemon: PropTypes.func,
 };
 
 Header.defaultProps = {
-    defineHeight: () => {},
     getAllPokemon: () => {},
 };
 

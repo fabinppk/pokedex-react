@@ -5,10 +5,10 @@ import Footer from '_organisms/Footer';
 
 import style from '_templates/PageWrapper/index.module.scss';
 
-const PageWrapper = ({ children, defineHeight, getAllPokemon }) => {
+const PageWrapper = ({ children, getAllPokemon }) => {
     return (
         <>
-            <Header defineHeight={defineHeight} getAllPokemon={getAllPokemon} />
+            <Header getAllPokemon={getAllPokemon} />
             <div className={style.masterContent}>
                 <section className={style.content}>{children}</section>
             </div>
@@ -19,7 +19,6 @@ const PageWrapper = ({ children, defineHeight, getAllPokemon }) => {
 
 PageWrapper.propTypes = {
     children: PropTypes.node,
-    defineHeight: PropTypes.func.isRequired,
     getAllPokemon: PropTypes.func.isRequired,
 };
 
