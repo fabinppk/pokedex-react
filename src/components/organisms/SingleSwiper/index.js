@@ -17,6 +17,14 @@ class SingleSwiper extends Component {
         window.addEventListener('resize', handleResize);
     }
 
+    setBodyColor = () => {
+        if (!window || !document) return;
+        const el = document.querySelectorAll('.swiper-slide-active > *');
+        if (!el[0]) return;
+        const actualTypeColor = window.getComputedStyle(el[0], null).getPropertyValue('background');
+        document.querySelectorAll('body')[0].setAttribute('style', `background:${actualTypeColor}`);
+    };
+
     /* istanbul ignore next */
     onChangeSlide = () => {
         const { getAllPokemon, setViewed, global } = this.props;
@@ -24,6 +32,9 @@ class SingleSwiper extends Component {
             getAllPokemon();
             setViewed(this.swiper.activeIndex + global.index.limit - 3);
         }
+        setTimeout(() => {
+            this.setBodyColor();
+        }, 100);
     };
 
     /* istanbul ignore next */
@@ -66,6 +77,7 @@ class SingleSwiper extends Component {
             if (this.swiper) {
                 this.swiper.update();
             }
+            this.setBodyColor();
         }, 100);
 
         return (
