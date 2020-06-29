@@ -27,6 +27,7 @@ class SingleSwiper extends Component {
             actualTypeColor.split(',')[6]
         }`;
         document.querySelectorAll('meta[name="theme-color"')[0].setAttribute('content', theme);
+        document.querySelectorAll('footer')[0].setAttribute('style', `background:${theme}`);
         document.querySelectorAll('body')[0].setAttribute('style', `background:${actualTypeColor}`);
     };
 
