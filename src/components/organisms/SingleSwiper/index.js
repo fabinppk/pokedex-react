@@ -19,9 +19,14 @@ class SingleSwiper extends Component {
 
     setBodyColor = () => {
         if (!window || !document) return;
+        if (window.innerWidth >= 768) return;
         const el = document.querySelectorAll('.swiper-slide-active > *');
         if (!el[0]) return;
         const actualTypeColor = window.getComputedStyle(el[0], null).getPropertyValue('background');
+        const theme = `${actualTypeColor.split(',')[4]},${actualTypeColor.split(',')[5]},${
+            actualTypeColor.split(',')[6]
+        }`;
+        document.querySelectorAll('meta[name="theme-color"')[0].setAttribute('content', theme);
         document.querySelectorAll('body')[0].setAttribute('style', `background:${actualTypeColor}`);
     };
 
