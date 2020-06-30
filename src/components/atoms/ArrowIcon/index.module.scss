@@ -6,6 +6,9 @@
     font-weight: bold;
     color: $color-grey-3;
     font-size: 20px;
+    color: #fff;
+    text-shadow: 1px 1px 6px #000;
+    top: -10px;
 }
 
 @media (max-width: 1200px) {
@@ -47,61 +50,17 @@
         transition: all $transition-time $transition-type;
     }
 
-    &.white {
-        &:before,
-        &:after {
-            background-color: white;
-        }
-    }
-
-    &.black {
-        &:before,
-        &:after {
-            background-color: black;
-        }
-    }
-
-    &.primary {
-        &:hover {
-            border: 2px solid $color-primary;
-        }
-
-        &:active {
-            border: 2px solid $color-primary-dark;
-        }
-
-        &:before,
-        &:after {
-            background-color: $color-primary;
-        }
-    }
-
-    &.secondary {
-        &:hover {
-            border: 2px solid $color-secondary;
-        }
-
-        &:active {
-            border: 2px solid $color-secondary-dark;
-        }
-
-        &:before,
-        &:after {
-            background-color: $color-secondary;
-        }
-    }
-
     &.grey {
         &:hover {
             &:before,
             &:after {
-                background-color: $color-grey-2;
+                background-color: $color-grey-7;
             }
         }
 
         &:before,
         &:after {
-            background-color: $color-grey-3;
+            background-color: $color-grey-7;
         }
     }
 }
@@ -191,47 +150,5 @@
             width: 3px;
             height: 15px;
         }
-    }
-}
-
-.arrowTop {
-    width: 80px;
-    height: 40px;
-
-    &:before {
-        top: 10px;
-        right: 22px;
-        width: 3px;
-        height: 9px;
-        transform: rotate(45deg);
-    }
-
-    &:after {
-        top: 10px;
-        right: 12px;
-        width: 3px;
-        height: 9px;
-        transform: rotate(135deg);
-    }
-}
-
-.arrowBottom {
-    width: 80px;
-    height: 40px;
-
-    &:before {
-        top: 11px;
-        right: 21px;
-        width: 3px;
-        height: 9px;
-        transform: rotate(135deg);
-    }
-
-    &:after {
-        top: 11px;
-        right: 12px;
-        width: 3px;
-        height: 9px;
-        transform: rotate(45deg);
     }
 }

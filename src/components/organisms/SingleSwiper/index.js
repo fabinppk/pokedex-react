@@ -19,7 +19,7 @@ class SingleSwiper extends Component {
 
     setBodyColor = () => {
         if (!window || !document) return;
-        if (window.innerWidth >= 768) return;
+        // if (window.innerWidth >= 768) return;
         const el = document.querySelectorAll('.swiper-slide-active > *');
         if (!el[0]) return;
         const actualTypeColor = window.getComputedStyle(el[0], null).getPropertyValue('background');
