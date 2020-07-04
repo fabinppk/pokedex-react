@@ -8,6 +8,7 @@ import { getPokemonByName } from '_utils/requestApi';
 import { createPokemonObj } from '_utils/helpers';
 import { useDispatch } from 'react-redux';
 import actions from '_redux/actions';
+import { logPageView, initGA } from '_atoms/Analytics/index';
 
 import style from '_organisms/Header/index.module.scss';
 
@@ -17,16 +18,22 @@ const Header = ({ getAllPokemon }) => {
     const dispatch = useDispatch();
 
     useEffect(() => {
+        initGA();
+    }, []);
+
+    useEffect(() => {
         const getPokemonByNames = async () => {
             let pokemon = null;
             if (searchInput) {
                 pokemon = await getPokemonByName(searchInput.toLowerCase());
                 if (pokemon) {
                     await dispatch(actions.setOnePokemon(createPokemonObj(pokemon)));
+                    logPageView(`${pokemon.name}`);
                     await dispatch(actions.setIndex({ offset: 0, limit: 15 }));
                 }
             } else if (!pokemon) {
                 getAllPokemon(true);
+                logPageView();
                 await dispatch(actions.setViewed(0));
             }
         };

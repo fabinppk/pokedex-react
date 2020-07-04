@@ -1,15 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PageWrapper from '_templates/PageWrapper';
 import SingleSwiper from '_organisms/SingleSwiper';
 import { getAllPokemons, getPokemon } from '_utils/requestApi';
 import { createPokemonObj } from '_utils/helpers';
 import { useDispatch, useSelector } from 'react-redux';
 import actions from '_redux/actions';
+import { logPageView, initGA } from '_atoms/Analytics/index';
 
 const Index = () => {
     const { pokemons, index } = useSelector((state) => ({
         ...state.global,
     }));
+
+    useEffect(() => {
+        initGA();
+        logPageView();
+    }, []);
 
     const dispatch = useDispatch();
 
