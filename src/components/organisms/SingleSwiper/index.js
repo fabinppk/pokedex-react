@@ -5,6 +5,7 @@ import Swiper from 'react-id-swiper/lib/ReactIdSwiper';
 import Card from '_molecules/Card';
 import { connect } from 'react-redux';
 import actions from '_redux/actions';
+import { logPageView } from '_atoms/Analytics/index';
 
 class SingleSwiper extends Component {
     componentDidMount() {
@@ -23,6 +24,8 @@ class SingleSwiper extends Component {
         const el = document.querySelectorAll('.swiper-slide-active > *');
         if (!el[0]) return;
         const actualTypeColor = window.getComputedStyle(el[0], null).getPropertyValue('background');
+        const pokemonName = el[0].querySelectorAll('p')[1].textContent;
+        logPageView(`/slide/${pokemonName}`);
         const theme = `${actualTypeColor.split(',')[4]},${actualTypeColor.split(',')[5]},${
             actualTypeColor.split(',')[6]
         }`;
