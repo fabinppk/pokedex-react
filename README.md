@@ -4,7 +4,7 @@
 
 ![](prints/desktop.gif)
 
-![](prints/mobile.gif)
+![](prints/mobile2.gif)
 
 ## Demo - https://pokedex-slide.herokuapp.com/
 
