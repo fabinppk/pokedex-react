@@ -4,7 +4,7 @@
 
 ![](prints/mobile2.gif)
 
-## Demo - https://pokedex-slide.herokuapp.com/
+## Demo - https://pokedex-react-iota.vercel.app/
 
 (Se tiver problema ao abrir, tente recarregar a página mais de uma vez)
 
